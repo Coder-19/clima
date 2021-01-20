@@ -28,6 +28,8 @@ class WeatherModel {
     // 0.4 now here we are storing the data that we get from the api into a
     // variable named weatherData and the data that we store here is the data that
     // we got in the JSON format
+
+    // from here we need to go to point 1
     var weatherData = await networkHelper.getData();
     return weatherData;
   }
