@@ -12,11 +12,16 @@ class WeatherModel {
     return cityWeatherData;
   }
 
+  // TODO: for studing the api workflow this is the first file from where we need to start to see the work flow
+
+  // 0. firstly here we are getting the data from the api in the method below and
+  // converting that data into the JSON format
   Future<dynamic> getLocationWeather() async {
     Location location = Location();
     await location.getCurrentLocation();
     NetworkHelper networkHelper = NetworkHelper(
-      url:'$openWeatherMapURL?lat=${location.latitude}&lon=${location.longitude}&appid=$apiKey&units=metric',
+      url:
+          '$openWeatherMapURL?lat=${location.latitude}&lon=${location.longitude}&appid=$apiKey&units=metric',
     );
 
     var weatherData = await networkHelper.getData();

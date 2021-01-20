@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:clima/utilities/constants.dart';
 
 class LocationScreen extends StatefulWidget {
-  final locationWeather;
+  final locationWeather; // 4. getting the data into the constructor of
+  // the location screen class and storing it in a variable named locationWeather
 
   LocationScreen({this.locationWeather});
 
@@ -24,9 +25,14 @@ class _LocationScreenState extends State<LocationScreen> {
   @override
   void initState() {
     super.initState();
-    updateUI(widget.locationWeather);
+    updateUI(widget.locationWeather); // 5. since LocationScreen is a statefull
+    // widget so we need to used widget method to get the data being stored in the
+    // location weather property and then this data is passed as input to the
+    // updateUI() method
   }
 
+  // 6. now the data stored in the location weather is passed as input to the
+  // updateUI() method
   void updateUI(dynamic displayWeatherData) {
     setState(() {
       if (displayWeatherData == null) {
@@ -37,6 +43,10 @@ class _LocationScreenState extends State<LocationScreen> {
         return; // the return statement will help the app to exit prematurly
       }
 
+      // 7. now the components of the JSON data present in the displayWeatherData
+      // is accessed using the method that we used to access data from the api and
+      // stored in different variables declared outside this function but are accessible
+      // throughout the  _LocationScreenState state
       double temp = displayWeatherData['main']['temp'];
       temperature = temp.toInt();
       message = weather.getMessage(temperature);
@@ -104,6 +114,8 @@ class _LocationScreenState extends State<LocationScreen> {
                 child: Row(
                   children: <Widget>[
                     Text(
+                      // 8. now here we are using the value of the temperature that we got from the
+                      // api and stored in the variable temperature
                       '$temperature°', // printing the value of temperature
                       style: kTempTextStyle,
                     ),
